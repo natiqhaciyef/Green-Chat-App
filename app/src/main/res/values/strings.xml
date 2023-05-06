@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Green Chat App</string>
+    <string name="reset_info">Please check your email, we will send the reset password link. If it is not show, check spam messages box</string>
+
+</resources>
