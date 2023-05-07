@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.natiqhaciyef.greenchatapp.view.screens.home.ChatScreen
 import com.natiqhaciyef.greenchatapp.view.screens.home.HomeScreen
 import com.natiqhaciyef.greenchatapp.view.screens.registration.LoginScreen
 import com.natiqhaciyef.greenchatapp.view.screens.registration.RegisterScreen
@@ -34,6 +35,10 @@ fun AppNavigation(){
 
         composable(route = ScreenID.Home.name){
             HomeScreen(navController = navController)
+        }
+
+        composable(route = ScreenID.Chat.name){
+            ChatScreen()
         }
     }
 }

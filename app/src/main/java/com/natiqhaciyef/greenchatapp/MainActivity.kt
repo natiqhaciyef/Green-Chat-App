@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.natiqhaciyef.greenchatapp.ui.theme.AppGreen
 import com.natiqhaciyef.greenchatapp.ui.theme.GreenChatTheme
 import com.natiqhaciyef.greenchatapp.view.navigatoin.AppNavigation
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 val systemUiController = rememberSystemUiController()
                 SideEffect {
-                    systemUiController.setStatusBarColor(color = Color.Transparent)
+                    systemUiController.setStatusBarColor(color = AppGreen)
                 }
                 AppNavigation()
             }
