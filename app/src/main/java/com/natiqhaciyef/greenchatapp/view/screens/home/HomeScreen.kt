@@ -3,7 +3,6 @@ package com.natiqhaciyef.greenchatapp.view.screens.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,10 +10,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
@@ -41,12 +43,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.natiqhaciyef.greenchatapp.R
-import com.natiqhaciyef.greenchatapp.data.model.UserStory
+import com.natiqhaciyef.greenchatapp.domain.util.obj.UserList
 import com.natiqhaciyef.greenchatapp.ui.theme.AppBlack
 import com.natiqhaciyef.greenchatapp.ui.theme.AppDarkGray
 import com.natiqhaciyef.greenchatapp.ui.theme.AppGreen
 import com.natiqhaciyef.greenchatapp.ui.theme.AppYellow
 import com.natiqhaciyef.greenchatapp.view.components.UserStoryItem
+import com.natiqhaciyef.greenchatapp.view.components.UserChatView
 
 @Preview
 @Composable
@@ -144,19 +147,14 @@ private fun HomeTopView(searchQuery: MutableState<String>) {
     )
 }
 
-val list = mutableListOf(
-    UserStory(image = "${R.drawable.image}", "Leslie"),
-    UserStory(image = "${R.drawable.image__1_}", "Philip"),
-    UserStory(image = "${R.drawable.image__2_}", "Aubrey"),
-    UserStory(image = "${R.drawable.image__3_}", "Mitchell"),
-)
 
 @Composable
 private fun HomeMainPart(searchQuery: MutableState<String>) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(),
+            .fillMaxHeight()
+            .verticalScroll(rememberScrollState()),
         shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
     ) {
         Column(
@@ -166,9 +164,13 @@ private fun HomeMainPart(searchQuery: MutableState<String>) {
         ) {
             Spacer(modifier = Modifier.height(20.dp))
             LazyRow {
-                items(list) { story ->
+                items(UserList.storyList) { story ->
                     UserStoryItem(story)
                 }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            for (chat in UserList.chatList){
+                UserChatView(userTextModel = chat)
             }
         }
     }

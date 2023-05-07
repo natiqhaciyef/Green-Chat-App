@@ -12,6 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val AppGreen = Color(0xff50924E)
 val AppYellow = Color(0xffFFD662)
+val AppOrange = Color(0xffED8936)
 val AppLightGray = Color(0xffD3D3D3)
 val AppWhite = Color(0xffffffff)
 val AppBlack = Color(0xff2A2D34)

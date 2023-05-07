@@ -74,7 +74,7 @@ fun BottomShadow(modifier: Modifier) {
 fun <T>CustomViewPager(list: MutableList<T> = mutableListOf()) {
     val pagerState = rememberPagerState(
         initialPage = 0,
-//        pageCount = list.size
+//        pageCount = storyList.size
     )
 
     LaunchedEffect(key1 = Unit) {
