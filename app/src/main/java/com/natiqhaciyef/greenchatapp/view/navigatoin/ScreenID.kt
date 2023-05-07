@@ -7,4 +7,5 @@ enum class ScreenID{
     ResetPassword,
 
     Home,
+    Chat
 }

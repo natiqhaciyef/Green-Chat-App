@@ -40,8 +40,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.greenchatapp.R
 import com.natiqhaciyef.greenchatapp.domain.util.obj.UserList
 import com.natiqhaciyef.greenchatapp.ui.theme.AppBlack
@@ -50,6 +53,7 @@ import com.natiqhaciyef.greenchatapp.ui.theme.AppGreen
 import com.natiqhaciyef.greenchatapp.ui.theme.AppYellow
 import com.natiqhaciyef.greenchatapp.view.components.UserStoryItem
 import com.natiqhaciyef.greenchatapp.view.components.UserChatView
+import com.natiqhaciyef.greenchatapp.view.viewmodel.home.HomeViewModel
 
 @Preview
 @Composable
@@ -94,7 +98,7 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
             Spacer(modifier = Modifier.height(60.dp))
             HomeTopView(searchQuery)
             Spacer(modifier = Modifier.height(30.dp))
-            HomeMainPart(searchQuery)
+            HomeMainPart(searchQuery,navController)
         }
     }
 }
@@ -149,7 +153,13 @@ private fun HomeTopView(searchQuery: MutableState<String>) {
 
 
 @Composable
-private fun HomeMainPart(searchQuery: MutableState<String>) {
+private fun HomeMainPart(searchQuery: MutableState<String>, navController: NavController) {
+    val viewModel: HomeViewModel = hiltViewModel()
+    val users = remember { viewModel.users }
+    val chats = remember { viewModel.chats }
+    val authUser = Firebase.auth.currentUser
+    val filteredByUser = viewModel.filterChatsByEmail(authUser?.email ?: "", chats.value.toMutableList())
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -169,8 +179,8 @@ private fun HomeMainPart(searchQuery: MutableState<String>) {
                 }
             }
             Spacer(modifier = Modifier.height(5.dp))
-            for (chat in UserList.chatList){
-                UserChatView(userTextModel = chat)
+            for (chat in filteredByUser){
+                UserChatView(chatModel = chat, navController = navController)
             }
         }
     }
