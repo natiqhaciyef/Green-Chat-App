@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "220617864776",
+    "firebase_url": "https://greenchat-b7aec-default-rtdb.firebaseio.com",
+    "project_id": "greenchat-b7aec",
+    "storage_bucket": "greenchat-b7aec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220617864776:android:155a552212e84f331bca7d",
+        "android_client_info": {
+          "package_name": "com.natiqhaciyef.green_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220617864776-nvmbei1ohht8fgn58nmv4e2l91idrn4i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.natiqhaciyef.green_chat_app",
+            "certificate_hash": "bb5764b766b8ba9220fb1db78a7acbeb103d9e26"
+          }
+        },
+        {
+          "client_id": "220617864776-9a75iri7j8rdbnkl79nspf2kv7osvb57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEWHMowMnAAs8L8BC4Hy27RWysFadIVrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220617864776-9a75iri7j8rdbnkl79nspf2kv7osvb57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

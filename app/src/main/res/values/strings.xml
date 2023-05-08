@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Green-Chat-App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reset_info">Please check your email, we will send the reset password link. If it is not show, check spam messages box</string>
+    <string name="email">Email</string>
+    <string name="send">Send</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="social_media">Or continue with social media</string>
+    <string name="google">Google</string>
+    <string name="do_you_have_an_account">Do you have an account ?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="you_don_t_have_an_account">You don\'t have an account ?</string>
+    <string name="facebook">Facebook</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password ?</string>
+    <string name="search">Search</string>
+
+</resources>
