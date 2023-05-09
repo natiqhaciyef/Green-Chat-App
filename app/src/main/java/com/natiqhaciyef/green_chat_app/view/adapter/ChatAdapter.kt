@@ -3,13 +3,14 @@ package com.natiqhaciyef.green_chat_app.view.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.natiqhaciyef.green_chat_app.databinding.RecyclerChatViewBinding
+import com.natiqhaciyef.green_chat_app.view.screens.home.fragment.HomeFragmentDirections
 import com.natiqhaciyef.green_chat_app.view.viewmodel.home.HomeViewModel
-import com.natiqhaciyef.green_chat_app.view.viewmodel.registration.RegistrationViewModel
-import com.natiqhaciyef.greenchatapp.data.model.ChatModel
+import com.natiqhaciyef.green_chat_app.data.model.ChatModel
 
 class ChatAdapter(val context: Context, val list: List<ChatModel>, val viewModel: HomeViewModel) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
@@ -55,6 +56,8 @@ class ChatAdapter(val context: Context, val list: List<ChatModel>, val viewModel
 
         holder.itemView.setOnClickListener {
             // onclick action
+            val action = HomeFragmentDirections.actionHomeFragmentToChatFragment2(receiver)
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

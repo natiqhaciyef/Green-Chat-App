@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.natiqhaciyef.greenchatapp.data.model.ChatModel
+import com.natiqhaciyef.green_chat_app.data.model.ChatModel
 import com.natiqhaciyef.greenchatapp.data.model.UserModel
 import com.natiqhaciyef.greenchatapp.view.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,12 +43,12 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     }
 
     init {
-        viewModelScope.launch {
-            chatFlow.collectLatest { value ->
-                data.value = value
-                println(value)
-            }
-        }
+//        viewModelScope.launch {
+//            chatFlow.collectLatest { value ->
+//                data.value = value
+//                println(value)
+//            }
+//        }
         getAllUsers()
         getAllChatsFromFirebase()
     }
@@ -59,7 +59,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
     }
 
-    private fun getAllUsers() {
+    fun getAllUsers() {
         val list = mutableListOf<UserModel>()
         val db = Firebase.firestore
         viewModelScope.launch(Dispatchers.IO) {
@@ -87,7 +87,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
     }
 
-    private fun getAllChatsFromFirebase() {
+    fun getAllChatsFromFirebase() {
         val list = mutableListOf<ChatModel>()
         val db = Firebase.firestore
         viewModelScope.launch(Dispatchers.IO) {
