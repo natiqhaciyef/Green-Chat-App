@@ -2,6 +2,7 @@ package com.natiqhaciyef.green_chat_app.view.screens.home.fragment
 
 import android.os.Bundle
 import android.os.Message
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.natiqhaciyef.green_chat_app.R
 import com.natiqhaciyef.green_chat_app.data.model.ChatModel
 import com.natiqhaciyef.green_chat_app.databinding.FragmentChatBinding
 import com.natiqhaciyef.green_chat_app.view.adapter.MessageAdapter
+import com.natiqhaciyef.green_chat_app.view.viewmodel.home.ChatViewModel
 import com.natiqhaciyef.green_chat_app.view.viewmodel.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ChatFragment : Fragment() {
     private lateinit var binding: FragmentChatBinding
     private val viewModel: HomeViewModel by viewModels()
+    private val chatViewModel: ChatViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +54,13 @@ class ChatFragment : Fragment() {
             binding.recyclerMessage.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
+            binding.sendButton.setOnClickListener {
+                val message = binding.textingPanel.text.toString()
+                if (message.isNotEmpty()){
+                    chatViewModel.sendDataToFirestore(chatModel, message, receiverEmail)
+                    binding.textingPanel.text.clear()
+                }
+            }
         }
-
-
     }
 }

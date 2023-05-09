@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.natiqhaciyef.green_chat_app.R
 import com.natiqhaciyef.green_chat_app.databinding.RecyclerMessageViewBinding
 
 class MessageAdapter(
@@ -35,20 +36,25 @@ class MessageAdapter(
             holder.binding.messageTextReceiver.visibility = View.GONE
 
             holder.binding.messageTextSender.text = mess
-        } else if(message.startsWith(receiver)) {
+            holder.binding.messageTextSender.setTextColor(context.resources.getColor(R.color.white))
+            holder.binding.constraintMessage.setBackgroundColor(context.resources.getColor(R.color.appGreen))
+
+        } else if (message.startsWith(receiver)) {
             // receiver
             val mess = message.removePrefix(receiver).removePrefix(" : ")
             holder.binding.messageTextSender.visibility = View.GONE
             holder.binding.messageTextReceiver.visibility = View.VISIBLE
 
             holder.binding.messageTextReceiver.text = mess
-        }else{
+            holder.binding.constraintMessage.setBackgroundColor(context.resources.getColor(R.color.lightBrown))
+        } else {
             // receiver
             val mess = message.removePrefix(receiver).removePrefix(" : ")
             holder.binding.messageTextSender.visibility = View.GONE
             holder.binding.messageTextReceiver.visibility = View.VISIBLE
 
             holder.binding.messageTextReceiver.text = mess
+            holder.binding.constraintMessage.setBackgroundColor(context.resources.getColor(R.color.lightBrown))
         }
     }
 }

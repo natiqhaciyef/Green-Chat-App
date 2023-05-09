@@ -15,7 +15,6 @@ import com.natiqhaciyef.green_chat_app.data.model.ChatModel
 class ChatAdapter(val context: Context, val list: List<ChatModel>, val viewModel: HomeViewModel) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
-
     inner class ChatViewHolder(val binding: RecyclerChatViewBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -30,7 +29,7 @@ class ChatAdapter(val context: Context, val list: List<ChatModel>, val viewModel
         val chatModel = list[position]
         val auth = Firebase.auth.currentUser
         val receiver = chatModel.users.filter {
-            it == auth?.email
+            it != auth?.email
         }[0]
 
         val username = viewModel.getUserByEmail(receiver)

@@ -109,10 +109,6 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
     }
 
-    fun recall() {
-        getAllChatsFromFirebase()
-    }
-
     fun filterChatsByEmail(email: String, chatModels: MutableList<ChatModel>)
             : MutableList<ChatModel> {
         val list = chatModels.filter {
@@ -135,7 +131,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     fun getUserByEmail(email: String): UserModel {
         val dum = users.value?.filter {
-            it.email != email
+            it.email == email
         }
 
         return if (!dum.isNullOrEmpty()) dum[0]
